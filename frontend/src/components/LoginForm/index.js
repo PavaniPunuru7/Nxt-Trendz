@@ -37,7 +37,7 @@ class LoginForm extends Component {
     const { username, password } = this.state;
     const userDetails = { username, password };
 
-    const url = "http://localhost:5000/api/auth/login";
+    const url = "https://nxttrendz-backend-akau.onrender.com/api/auth/login";
     const options = {
       method: "POST",
       headers: {

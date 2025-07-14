@@ -69,7 +69,7 @@ class AllProductsSection extends Component {
     const { activeOptionId, activeCategoryId, searchInput, activeRatingId } =
       this.state;
 
-    const apiUrl = `http://localhost:5000/api/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`;
+    const apiUrl = `https://nxttrendz-backend-akau.onrender.com/api/products?sort_by=${activeOptionId}&category=${activeCategoryId}&title_search=${searchInput}&rating=${activeRatingId}`;
     console.log("🚀 Fetching:", apiUrl);
 
     try {

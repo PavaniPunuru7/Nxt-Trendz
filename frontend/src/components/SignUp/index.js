@@ -63,7 +63,7 @@ class SignUp extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     const userDetails = { username, password };
-    const url = "http://localhost:5000/api/auth/signup"; // ✅ backend route
+    const url = "https://nxttrendz-backend-akau.onrender.com/api/auth/signup"; // ✅ backend route
     const options = {
       method: "POST",
       headers: {

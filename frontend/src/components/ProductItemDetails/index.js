@@ -35,7 +35,9 @@ class ProductItemDetails extends Component {
     const { id } = match.params;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${id}`);
+      const response = await fetch(
+        `https://nxttrendz-backend-akau.onrender.com/api/products/${id}`
+      );
       if (response.ok) {
         const data = await response.json();
 
