@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
@@ -83,21 +83,22 @@ class App extends Component {
           decrementCartItemQuantity: this.decrementCartItemQuantity,
         }}
       >
-        <Switch>
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/signup" component={SignUp} />
-          <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/products" component={Products} />
-          <ProtectedRoute
-            exact
-            path="/products/:id"
-            component={ProductItemDetails}
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<ProtectedRoute component={Home} />} />
+          <Route
+            path="/products"
+            element={<ProtectedRoute component={Products} />}
           />
-          <ProtectedRoute exact path="/cart" component={Cart} />
-
-          <Route path="/not-found" component={NotFound} />
-          <Redirect to="not-found" />
-        </Switch>
+          <Route
+            path="/products/:id"
+            element={<ProtectedRoute component={ProductItemDetails} />}
+          />
+          <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
+        </Routes>
       </CartContext.Provider>
     );
   }
