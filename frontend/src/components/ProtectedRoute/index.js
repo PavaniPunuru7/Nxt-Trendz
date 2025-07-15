@@ -1,12 +1,14 @@
-import { Redirect, Route } from "react-router-dom";
-import Cookie from "js-cookie";
+import { Navigate, Outlet } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const ProtectedRoute = (props) => {
-  const token = Cookie.get("jwt_token");
-  if (token === undefined) {
-    return <Redirect to="/signup" />;
+const ProtectedRoute = () => {
+  const token = Cookies.get("jwt_token");
+
+  if (!token) {
+    return <Navigate to="/signup" replace />;
   }
-  return <Route {...props} />;
+
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

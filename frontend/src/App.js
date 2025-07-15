@@ -86,16 +86,15 @@ class App extends Component {
         <Routes>
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<ProtectedRoute component={Home} />} />
-          <Route
-            path="/products"
-            element={<ProtectedRoute component={Products} />}
-          />
-          <Route
-            path="/products/:id"
-            element={<ProtectedRoute component={ProductItemDetails} />}
-          />
-          <Route path="/cart" element={<ProtectedRoute component={Cart} />} />
+
+          {/* ✅ Protected Routes Wrapper */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductItemDetails />} />
+            <Route path="/cart" element={<Cart />} />
+          </Route>
+
           <Route path="/not-found" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>

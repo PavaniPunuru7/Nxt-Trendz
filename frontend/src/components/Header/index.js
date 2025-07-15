@@ -1,17 +1,15 @@
-import { Link, withRouter } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-
 import CartContext from "../../context/CartContext";
 
 import "./index.css";
 
-// ...import statements
+const Header = () => {
+  const navigate = useNavigate();
 
-const Header = (props) => {
   const onClickLogout = () => {
-    const { history } = props;
     Cookies.remove("jwt_token");
-    history.replace("/login");
+    navigate("/login");
   };
 
   const renderCartItemsCount = () => (
@@ -26,7 +24,6 @@ const Header = (props) => {
       }}
     </CartContext.Consumer>
   );
-
   return (
     <nav className="nav-header">
       <div className="nav-content">
@@ -137,4 +134,4 @@ const Header = (props) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;

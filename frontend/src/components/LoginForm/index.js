@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom"; // ✅ updated import
 import "./index.css";
 
 class LoginForm extends Component {
@@ -107,7 +107,7 @@ class LoginForm extends Component {
     const jwtToken = Cookies.get("jwt_token");
 
     if (jwtToken !== undefined) {
-      return <Redirect to="/" />;
+      return <Navigate to="/" replace />; // ✅ updated Redirect
     }
 
     return (
@@ -133,7 +133,6 @@ class LoginForm extends Component {
           <button type="submit" className="login-button">
             Login
           </button>
-          {/* ✅ Display backend error here */}
           {showSubmitError && <p className="error-message">{errorMsg}</p>}
         </form>
       </div>

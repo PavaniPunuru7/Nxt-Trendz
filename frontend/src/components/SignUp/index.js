@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 // Client --> Server Communication
 
@@ -128,7 +128,7 @@ class SignUp extends Component {
 
     // When authiticated user tries to access login route, Navigate them to Home Route
     if (jwtToken !== undefined) {
-      return <Redirect to="/" />;
+      return <Navigate to="/" replace />; // ✅ updated component
     }
     return (
       <div className="login-form-container">
